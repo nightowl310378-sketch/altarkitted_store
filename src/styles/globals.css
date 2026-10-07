@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#131630] text-gray-100 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  
+  .premium-glow {
+    box-shadow: 0 0 20px rgba(244, 113, 149, 0.15), 0 0 40px rgba(244, 113, 149, 0.1);
+  }
+  
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-indigo-300;
+  }
+
+  .btn-primary {
+    @apply bg-pink-400 hover:bg-pink-300 text-[#171a35] font-bold uppercase tracking-wide transition-all hover:shadow-[0_0_20px_rgba(244,113,149,0.45)];
+  }
+}
+
+/* Old-site floating particles */
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float 15s infinite linear;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
