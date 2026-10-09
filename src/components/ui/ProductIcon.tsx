@@ -9,13 +9,17 @@ const TIER: Record<string, [string, string]> = {
   altar: ['#60a5fa', '#1e40af'],
   'altar-plus': ['#a78bfa', '#6d28d9'],
   'custom-rank': ['#f47195', '#9d174d'],
+  'early-access': ['#5eead4', '#0f766e'],
+  spooky: ['#c084fc', '#6b21a8'],
   'upgrade-mvp-altar': ['#c7d2fe', '#6366f1'],
   'upgrade-altar-plus': ['#c7d2fe', '#6366f1'],
   'upgrade-custom': ['#c7d2fe', '#6366f1'],
+  'key-spooky': ['#e879f9', '#86198f'],
+  'key-undead': ['#a3e635', '#3f6212'],
+  'key-pumpkin': ['#fb923c', '#9a3412'],
+  'key-ghost': ['#a5f3fc', '#155e75'],
   'key-koth': ['#f87171', '#991b1b'],
   'key-custom': ['#93c5fd', '#1e3a8a'],
-  'key-pumpkin': ['#fb923c', '#9a3412'],
-  'key-undead': ['#a3e635', '#3f6212'],
 };
 
 const MONOGRAM: Record<string, string> = {
@@ -23,6 +27,8 @@ const MONOGRAM: Record<string, string> = {
   altar: 'A',
   'altar-plus': 'A+',
   'custom-rank': 'CR',
+  'early-access': 'EA',
+  spooky: 'SP',
 };
 
 const TierDefs: React.FC<{ id: string; from: string; to: string }> = ({ id, from, to }) => (

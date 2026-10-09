@@ -53,7 +53,10 @@ const ProductCard: React.FC<{ product: Product; onBuy: (product: Product) => voi
             {product.discountPrice && (
               <span className="text-xs text-gray-500 line-through">${product.discountPrice}</span>
             )}
-            <span className="text-2xl font-black text-white">${product.price}</span>
+            <span className="text-2xl font-black text-white">
+              {product.priceTiers && <span className="text-sm font-bold text-gray-400 mr-1">from</span>}
+              ${product.price}
+            </span>
           </div>
 
           <div className="flex items-center gap-2">

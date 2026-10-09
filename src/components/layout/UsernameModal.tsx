@@ -15,6 +15,7 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [tierIndex, setTierIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
       if (saved) setUsername(saved);
       setError('');
       setLoading(false);
+      setTierIndex(0);
       const t = setTimeout(() => inputRef.current?.focus(), 300);
       return () => clearTimeout(t);
     }
@@ -34,13 +36,19 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
+  const tiers = product?.priceTiers ?? [];
+  const hasTiers = tiers.length > 0;
+  const selectedTier = hasTiers ? tiers[Math.min(tierIndex, tiers.length - 1)] : undefined;
+  const activePrice = selectedTier?.price ?? product?.price ?? 0;
+
   const handleCheckout = async () => {
     const name = username.trim();
     if (!MINECRAFT_USERNAME_RE.test(name)) {
       setError('Enter a valid Minecraft username (3-16 letters, numbers or underscores).');
       return;
     }
-    if (!product?.tebexPackageId) {
+    const packageId = selectedTier?.tebexPackageId ?? product?.tebexPackageId;
+    if (!packageId) {
       setError('This item is not available for checkout yet.');
       return;
     }
@@ -51,7 +59,7 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ packageId: product.tebexPackageId, username: name }),
+        body: JSON.stringify({ packageId, username: name }),
       });
       const data = await res.json();
       if (!res.ok || !data.checkoutUrl) {
@@ -102,14 +110,40 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
                   <div>
                     <h2 className="text-xl font-black text-white">ENTER YOUR USERNAME</h2>
                     <p className="text-sm text-pink-300 font-bold">
-                      {product.name} — ${product.price}
+                      {product.name} — ${activePrice}
                     </p>
                   </div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">
-                  Your rank will be delivered to this Minecraft account automatically after payment.
+                  Your items will be delivered to this Minecraft account automatically after payment.
                 </p>
+
+                {hasTiers && (
+                  <div className="mb-5">
+                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-2 font-bold">Quantity</p>
+                    <div className="grid grid-cols-4 gap-2">
+                      {tiers.map((tier, i) => (
+                        <button
+                          key={tier.label}
+                          onClick={() => {
+                            setTierIndex(i);
+                            if (error) setError('');
+                          }}
+                          disabled={loading}
+                          className={`py-2 rounded-lg border text-center transition-all ${
+                            i === tierIndex
+                              ? 'bg-pink-400 border-pink-300 text-[#171a35] shadow-lg shadow-pink-400/20'
+                              : 'bg-black/40 border-white/10 text-gray-300 hover:border-pink-400/50'
+                          }`}
+                        >
+                          <span className="block text-sm font-black">{tier.label}</span>
+                          <span className="block text-xs font-bold opacity-80">${tier.price}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <div className="relative mb-2">
                   <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />

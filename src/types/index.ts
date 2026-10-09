@@ -5,6 +5,12 @@
 
 export type Category = 'Ranks' | 'Rank Upgrades' | 'Keys';
 
+export interface PriceTier {
+  label: string;
+  price: number;
+  tebexPackageId?: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -18,6 +24,7 @@ export interface Product {
   color?: string;
   isPopular?: boolean;
   tebexPackageId?: number;
+  priceTiers?: PriceTier[];
 }
 
 export interface CartItem extends Product {
