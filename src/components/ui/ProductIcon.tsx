@@ -18,8 +18,7 @@ const TIER: Record<string, [string, string]> = {
   'key-undead': ['#a3e635', '#3f6212'],
   'key-pumpkin': ['#fb923c', '#9a3412'],
   'key-ghost': ['#a5f3fc', '#155e75'],
-  'key-koth': ['#f87171', '#991b1b'],
-  'key-custom': ['#93c5fd', '#1e3a8a'],
+  'key-soul': ['#fb7185', '#9f1239'],
 };
 
 const MONOGRAM: Record<string, string> = {
