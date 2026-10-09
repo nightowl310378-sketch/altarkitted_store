@@ -9,7 +9,7 @@ interface VercelResponse {
   json(body: any): void;
 }
 
-const TEBEX_API_BASE = 'https://api.tebex.io/v1';
+const TEBEX_CHECKOUT_URL = 'https://plugin.tebex.io/checkout';
 const MINECRAFT_USERNAME_RE = /^[a-zA-Z0-9_]{3,16}$/;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -36,30 +36,32 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const tebexRes = await fetch(`${TEBEX_API_BASE}/baskets`, {
+    const tebexRes = await fetch(TEBEX_CHECKOUT_URL, {
       method: 'POST',
       headers: {
-        'Authorization': secretKey,
+        'X-Tebex-Secret': secretKey,
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
       body: JSON.stringify({
+        package_id: String(packageId),
         username: username.trim(),
-        items: [{ package_id: packageId, quantity: 1 }],
-        complete_url: `${req.headers.origin ?? ''}/`,
-        return_url: `${req.headers.origin ?? ''}/`,
       }),
     });
 
     const data = await tebexRes.json().catch(() => null);
 
-    if (!tebexRes.ok || !data?.links?.checkout) {
-      console.error('Tebex basket creation failed:', tebexRes.status, JSON.stringify(data));
-      res.status(502).json({ error: 'Could not start checkout. Please try again in a moment.' });
+    if (!tebexRes.ok || !data?.url) {
+      console.error('Tebex checkout URL creation failed:', tebexRes.status, JSON.stringify(data));
+      const userError =
+        tebexRes.status === 400 && data?.error_message
+          ? data.error_message
+          : 'Could not start checkout. Please try again in a moment.';
+      res.status(502).json({ error: userError });
       return;
     }
 
-    res.status(200).json({ checkoutUrl: data.links.checkout });
+    res.status(200).json({ checkoutUrl: data.url });
   } catch (err) {
     console.error('Checkout error:', err);
     res.status(500).json({ error: 'Something went wrong. Please try again.' });

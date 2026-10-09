@@ -1,6 +1,6 @@
 import { createServer } from 'node:http';
 
-const TEBEX_API_BASE = 'https://api.tebex.io/v1';
+const TEBEX_CHECKOUT_URL = 'https://plugin.tebex.io/checkout';
 const MINECRAFT_USERNAME_RE = /^[a-zA-Z0-9_]{3,16}$/;
 const PORT = process.env.PORT || 3001;
 
@@ -35,30 +35,34 @@ const server = createServer(async (req, res) => {
         return;
       }
 
-      const tebexRes = await fetch(`${TEBEX_API_BASE}/baskets`, {
+      const tebexRes = await fetch(TEBEX_CHECKOUT_URL, {
         method: 'POST',
         headers: {
-          'Authorization': secretKey,
+          'X-Tebex-Secret': secretKey,
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         body: JSON.stringify({
+          package_id: String(packageId),
           username: username.trim(),
-          items: [{ package_id: packageId, quantity: 1 }],
         }),
       });
 
       const data = await tebexRes.json().catch(() => null);
 
-      if (!tebexRes.ok || !data?.links?.checkout) {
-        console.error('Tebex basket creation failed:', tebexRes.status, JSON.stringify(data));
+      if (!tebexRes.ok || !data?.url) {
+        console.error('Tebex checkout URL creation failed:', tebexRes.status, JSON.stringify(data));
+        const userError =
+          tebexRes.status === 400 && data?.error_message
+            ? data.error_message
+            : 'Could not start checkout. Please try again in a moment.';
         res.writeHead(502, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Could not start checkout. Please try again in a moment.' }));
+        res.end(JSON.stringify({ error: userError }));
         return;
       }
 
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ checkoutUrl: data.links.checkout }));
+      res.end(JSON.stringify({ checkoutUrl: data.url }));
     } catch (err) {
       console.error('Checkout error:', err);
       res.writeHead(500, { 'Content-Type': 'application/json' });
