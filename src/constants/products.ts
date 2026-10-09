@@ -58,6 +58,25 @@ export const PRODUCTS: Product[] = [
     color: 'from-violet-400 to-violet-800',
     isPopular: true,
   },
+  {
+    id: 'rank-custom',
+    tebexPackageId: 7629180,
+    icon: 'custom-rank',
+    name: 'CUSTOM RANK',
+    image: '/assets/images/ranks/custom-rank.png',
+    description: 'All Altar+ perks plus /setprefix, your own kit and a daily custom key.',
+    price: 20,
+    category: 'Ranks',
+    perks: [
+      'All Altar / Altar+ / VIP Perks',
+      '/setprefix — Custom Named Prefix',
+      'Your Own Premade Kit (5h cooldown)',
+      '1x Space Key + 1 Custom Key Daily',
+      'Gift the Server a Space Key (/keyall)',
+      'Shadow Blade & Nightpiercer Kit',
+    ],
+    color: 'from-pink-400 to-rose-800',
+  },
   // RANK UPGRADES
   {
     id: 'upgrade-mvp-altar',

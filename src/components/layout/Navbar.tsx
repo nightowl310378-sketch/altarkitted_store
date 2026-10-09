@@ -16,7 +16,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
   }, []);
 
   const copyIP = async () => {
-    await navigator.clipboard.writeText('play.altarkitted.com');
+    await navigator.clipboard.writeText('altarkitted.minehut.gg');
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -71,7 +71,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
             onClick={copyIP}
             className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#0f1130] border-2 border-indigo-400/25 hover:border-pink-400/50 transition-all cursor-pointer group"
           >
-            <span className="text-xs font-mono text-gray-300">play.altarkitted.com</span>
+            <span className="text-xs font-mono text-gray-300">altarkitted.minehut.gg</span>
             <div className="relative">
               {isCopied ? (
                 <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="text-green-400">
@@ -119,7 +119,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
               ))}
               <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
                 <div className="flex items-center justify-between p-3 rounded-xl bg-white/5">
-                  <span className="text-sm font-mono">play.altarkitted.com</span>
+                  <span className="text-sm font-mono">altarkitted.minehut.gg</span>
                   <button onClick={copyIP} className="p-2 bg-pink-400 rounded-lg text-[#171a35]">
                     {isCopied ? <Check size={16} /> : <Copy size={16} />}
                   </button>

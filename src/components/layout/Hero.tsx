@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   const [copied, setCopied] = useState(false);
 
   const copyIP = async () => {
-    await navigator.clipboard.writeText('play.altarkitted.com');
+    await navigator.clipboard.writeText('altarkitted.minehut.gg');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
 
           <div className="mt-16 inline-flex items-center gap-4 p-2 pr-6 rounded-lg bg-[#0f1130]/80 border-2 border-indigo-400/25 backdrop-blur-md">
             <div className="px-4 py-2 bg-pink-400 rounded-md text-sm font-black text-[#171a35]">
-              IP: play.altarkitted.com
+              IP: altarkitted.minehut.gg
             </div>
             <button 
               onClick={copyIP}
