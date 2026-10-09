@@ -9,9 +9,9 @@ const FeatureCard: React.FC<{ icon: React.ReactNode, title: string, desc: string
     viewport={{ once: true, margin: '-50px' }}
     transition={{ duration: 0.5, delay: index * 0.08 }}
     whileHover={{ y: -5 }}
-    className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-pink-400/50 hover:shadow-[0_10px_40px_-15px_rgba(244,113,149,0.3)] transition-all"
+    className="corner-cut relative p-8 rounded-2xl bg-[#0f1130]/80 border-2 border-indigo-400/20 hover:border-pink-400/60 hover:shadow-[0_10px_40px_-15px_rgba(244,113,149,0.5)] transition-all"
   >
-    <div className="w-12 h-12 rounded-2xl bg-pink-400/20 text-pink-300 flex items-center justify-center mb-6">
+    <div className="w-12 h-12 rounded-lg bg-pink-400/20 border-2 border-pink-400/40 text-pink-300 flex items-center justify-center mb-6">
       {icon}
     </div>
     <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
@@ -39,6 +39,9 @@ const WhyAltarkitted: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="mb-4">
+            <span className="kicker">Why Choose Us</span>
+          </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
             WHY <span className="text-gradient-accent">ALTARKITTED?</span>
           </h2>

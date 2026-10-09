@@ -13,14 +13,14 @@ const RankCard: React.FC<{ rank: Product; onBuy: (product: Product) => void; ind
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.02, y: -5 }}
-      className={`relative p-8 rounded-3xl border transition-all duration-500 ${
+      className={`corner-cut relative p-8 rounded-2xl border-2 transition-all duration-500 ${
         rank.isPopular 
-          ? 'bg-gradient-to-b from-indigo-950/60 to-[#131630] border-pink-400 shadow-[0_0_40px_rgba(244,113,149,0.2)]' 
-          : 'bg-white/5 border-white/10 hover:border-white/30'
+          ? 'bg-gradient-to-b from-[#2a1f52] to-[#131630] border-pink-400 shadow-[0_0_50px_rgba(244,113,149,0.35)]' 
+          : 'bg-[#0f1130]/80 border-indigo-400/20 hover:border-indigo-400/60'
       }`}
     >
       {rank.isPopular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-pink-400 text-[#171a35] text-xs font-black rounded-full uppercase shadow-lg shadow-pink-400/30">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-pink-400 text-[#171a35] text-xs font-black rounded-md -skew-x-12 border-2 border-pink-200 uppercase shadow-lg shadow-pink-400/30">
           Most Popular
         </div>
       )}
@@ -29,10 +29,10 @@ const RankCard: React.FC<{ rank: Product; onBuy: (product: Product) => void; ind
         <ProductIcon
           product={rank}
           iconSize={40}
-          className="w-20 h-20 mx-auto rounded-2xl mb-4 shadow-lg"
+          className="w-20 h-20 mx-auto rounded-2xl mb-4 shadow-lg border-2 border-white/10"
         />
         <h3 className="text-3xl font-black text-white mb-2">{rank.name}</h3>
-        <div className="text-4xl font-black text-white mb-6">${rank.price}</div>
+        <div className="text-4xl font-black text-white mb-6 font-display">${rank.price}</div>
       </div>
 
       <ul className="space-y-4 mb-10">
@@ -46,10 +46,10 @@ const RankCard: React.FC<{ rank: Product; onBuy: (product: Product) => void; ind
 
       <button 
         onClick={() => onBuy(rank)}
-        className={`w-full py-4 rounded-xl font-bold transition-all ${
+        className={`w-full py-4 rounded-lg transition-all ${
         rank.isPopular 
           ? 'btn-primary' 
-          : 'bg-white/10 hover:bg-white/20 text-white'
+          : 'btn-ghost'
       }`}>
         Purchase Rank
       </button>
@@ -72,6 +72,9 @@ const RankShowcase: React.FC<{ onBuy: (product: Product) => void }> = ({ onBuy }
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="mb-4">
+            <span className="kicker">Ranks &amp; Upgrades</span>
+          </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
             ASCEND TO <span className="text-gradient-accent">GREATNESS</span>
           </h2>

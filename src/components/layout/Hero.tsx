@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(circle at center, rgba(23, 19, 16, 0.3) 0%, rgba(23, 19, 16, 0.9) 100%), linear-gradient(to bottom, transparent, #131630)',
+              'radial-gradient(circle at center, rgba(19, 22, 48, 0.35) 0%, rgba(19, 22, 48, 0.9) 100%), linear-gradient(to bottom, transparent, #131630)',
           }}
         />
         
@@ -83,7 +83,13 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6">
+          <div className="mb-6">
+            <span className="kicker">Season 2026 · Now Live</span>
+          </div>
+          <h1
+            className="text-6xl md:text-8xl font-black tracking-tighter mb-6"
+            style={{ textShadow: '0 0 45px rgba(244,113,149,0.35)' }}
+          >
             UPGRADE YOUR <br />
             <span className="text-gradient-accent">LEGACY.</span>
           </h1>
@@ -97,7 +103,7 @@ const Hero: React.FC = () => {
               href="#store"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary px-10 py-4 rounded-xl w-full sm:w-auto"
+              className="btn-primary px-10 py-4 rounded-lg w-full sm:w-auto"
             >
               EXPLORE STORE
             </motion.a>
@@ -107,14 +113,14 @@ const Hero: React.FC = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl transition-all border border-white/10 w-full sm:w-auto"
+              className="btn-ghost px-10 py-4 rounded-lg w-full sm:w-auto"
             >
               JOIN THE SERVER
             </motion.a>
           </div>
 
-          <div className="mt-16 inline-flex items-center gap-4 p-2 pr-6 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <div className="px-4 py-2 bg-pink-400 rounded-full text-sm font-bold text-[#171a35]">
+          <div className="mt-16 inline-flex items-center gap-4 p-2 pr-6 rounded-lg bg-[#0f1130]/80 border-2 border-indigo-400/25 backdrop-blur-md">
+            <div className="px-4 py-2 bg-pink-400 rounded-md text-sm font-black text-[#171a35]">
               IP: play.altarkitted.com
             </div>
             <button 

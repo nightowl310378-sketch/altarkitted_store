@@ -90,7 +90,7 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[90] w-[calc(100%-2rem)] max-w-md"
           >
-            <div className="glass-panel p-8 relative overflow-hidden">
+            <div className="glass-panel corner-cut p-8">
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-pink-400/20 rounded-full blur-[80px] pointer-events-none" />
 
               <button
@@ -131,10 +131,10 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
                             if (error) setError('');
                           }}
                           disabled={loading}
-                          className={`py-2 rounded-lg border text-center transition-all ${
+                          className={`py-2 rounded-md border-2 text-center transition-all ${
                             i === tierIndex
                               ? 'bg-pink-400 border-pink-300 text-[#171a35] shadow-lg shadow-pink-400/20'
-                              : 'bg-black/40 border-white/10 text-gray-300 hover:border-pink-400/50'
+                              : 'bg-[#0f1130] border-white/10 text-gray-300 hover:border-pink-400/50'
                           }`}
                         >
                           <span className="block text-sm font-black">{tier.label}</span>
@@ -159,7 +159,7 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
                     placeholder="Minecraft username"
                     maxLength={16}
                     disabled={loading}
-                    className="w-full pl-11 pr-4 py-4 bg-black/40 border border-white/10 rounded-xl text-white font-mono focus:outline-none focus:border-pink-400 transition-all placeholder:text-gray-600"
+                    className="w-full pl-11 pr-4 py-4 bg-[#0f1130] border-2 border-white/10 rounded-lg text-white font-mono focus:outline-none focus:border-pink-400 transition-all placeholder:text-gray-600"
                   />
                 </div>
 
@@ -174,7 +174,7 @@ const UsernameModal: React.FC<UsernameModalProps> = ({ product, onClose }) => {
                   whileTap={{ scale: 0.97 }}
                   onClick={handleCheckout}
                   disabled={loading}
-                  className="w-full py-4 mt-3 bg-gradient-to-r from-pink-400 to-indigo-400 hover:from-pink-300 hover:to-indigo-300 rounded-xl font-bold uppercase tracking-wide text-[#171a35] flex items-center justify-center gap-2 transition-all shadow-lg shadow-pink-400/20 disabled:opacity-60"
+                  className="btn-primary w-full py-4 mt-3 rounded-lg gap-2 disabled:opacity-60"
                 >
                   {loading ? (
                     <>

@@ -6,24 +6,95 @@
   body {
     @apply bg-[#131630] text-gray-100 antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-image:
+      linear-gradient(rgba(129, 140, 248, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(129, 140, 248, 0.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Chakra Petch', 'Inter', system-ui, sans-serif;
+    letter-spacing: -0.01em;
   }
 }
 
 @layer components {
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+    @apply relative overflow-hidden rounded-xl border-2 border-indigo-400/20;
+    background: linear-gradient(180deg, rgba(32, 37, 82, 0.85), rgba(14, 16, 46, 0.95));
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
-  
+
   .premium-glow {
-    box-shadow: 0 0 20px rgba(244, 113, 149, 0.15), 0 0 40px rgba(244, 113, 149, 0.1);
+    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35), 0 0 30px rgba(244, 113, 149, 0.25);
   }
-  
+
   .text-gradient-accent {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-indigo-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-pink-300 to-indigo-300;
   }
 
   .btn-primary {
-    @apply bg-pink-400 hover:bg-pink-300 text-[#171a35] font-bold uppercase tracking-wide transition-all hover:shadow-[0_0_20px_rgba(244,113,149,0.45)];
+    @apply relative inline-flex items-center justify-center bg-gradient-to-b from-pink-400 to-pink-500 text-[#171a35] font-black uppercase tracking-widest transition-all duration-150;
+    border: 2px solid #ffd6e8;
+    box-shadow: 0 5px 0 #9d0f4f, 0 8px 22px rgba(244, 113, 149, 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #9d0f4f, 0 12px 28px rgba(244, 113, 149, 0.45);
+  }
+  .btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #9d0f4f;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center bg-[#0f1130] text-white font-black uppercase tracking-widest transition-all duration-150;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.45);
+  }
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+    border-color: #818cf8;
+    box-shadow: 0 7px 0 rgba(0, 0, 0, 0.45), 0 0 22px rgba(129, 140, 248, 0.4);
+  }
+  .btn-ghost:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+  }
+
+  .kicker {
+    @apply inline-block bg-pink-400/10 text-pink-300 text-xs font-black tracking-[0.25em] uppercase px-4 py-1.5 -skew-x-12 border-2 border-pink-400/30;
+  }
+
+  .corner-cut::before,
+  .corner-cut::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    z-index: 20;
+  }
+  .corner-cut::before {
+    top: 7px;
+    left: 7px;
+    border-top: 3px solid #f47195;
+    border-left: 3px solid #f47195;
+  }
+  .corner-cut::after {
+    bottom: 7px;
+    right: 7px;
+    border-bottom: 3px solid #818cf8;
+    border-right: 3px solid #818cf8;
+  }
+
+  .tag-slant {
+    display: inline-block;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transform: skewX(-12deg);
   }
 }
 

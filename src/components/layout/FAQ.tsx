@@ -11,7 +11,7 @@ const FAQItem: React.FC<{ question: string, answer: string }> = ({ question, ans
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-6 flex items-center justify-between text-left group"
       >
-        <span className="text-lg font-medium text-gray-300 group-hover:text-white transition-colors">{question}</span>
+        <span className="text-lg font-bold text-gray-300 group-hover:text-white transition-colors">{question}</span>
         <motion.div 
           animate={{ rotate: isOpen ? 180 : 0 }}
           className="text-gray-500"
@@ -74,6 +74,9 @@ const FAQ: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="mb-4">
+            <span className="kicker">Support</span>
+          </div>
           <h2 className="text-4xl md:text-6xl font-black text-white mb-4">
             QUESTIONS? <span className="text-gradient-accent">ANSWERS.</span>
           </h2>
@@ -87,7 +90,7 @@ const FAQ: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="glass-panel p-8"
+          className="glass-panel corner-cut p-8"
         >
           {questions.map((q, i) => <FAQItem key={i} {...q} />)}
         </motion.div>

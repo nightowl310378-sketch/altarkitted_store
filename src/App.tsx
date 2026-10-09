@@ -28,7 +28,7 @@ const App: React.FC = () => {
           <Hero />
           
           {/* Stats Strip */}
-          <div className="relative z-10 py-12 border-y border-white/10 bg-black/40 backdrop-blur-sm">
+          <div className="relative z-10 py-12 border-y-2 border-indigo-400/15 bg-black/40 backdrop-blur-sm">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { label: 'Players', value: '50K+' },
@@ -44,7 +44,7 @@ const App: React.FC = () => {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="text-center"
                 >
-                  <div className="text-3xl font-black text-white mb-1">{stat.value}</div>
+                  <div className="text-3xl font-black text-white mb-1 font-display">{stat.value}</div>
                   <div className="text-xs font-bold text-pink-300 uppercase tracking-widest">{stat.label}</div>
                 </motion.div>
               ))}
@@ -87,11 +87,11 @@ const App: React.FC = () => {
                   href="https://discord.gg/qUH8vQeEAx"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary px-10 py-4 rounded-xl w-full sm:w-auto"
+                  className="btn-primary px-10 py-4 rounded-lg w-full sm:w-auto"
                 >
                   JOIN DISCORD
                 </a>
-                <button className="px-10 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all border border-white/10 w-full sm:w-auto">
+                <button className="btn-ghost px-10 py-4 rounded-lg w-full sm:w-auto">
                   PLAY NOW
                 </button>
               </motion.div>
@@ -102,7 +102,7 @@ const App: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 whileHover={{ scale: 1.02 }}
-                className="mt-16 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md max-w-md mx-auto flex items-center justify-between"
+                className="mt-16 p-6 rounded-xl bg-[#0f1130]/80 border-2 border-indigo-400/25 backdrop-blur-md max-w-md mx-auto flex items-center justify-between"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[#5865F2] rounded-2xl flex items-center justify-center text-white font-bold">
@@ -137,7 +137,7 @@ const App: React.FC = () => {
         {/* Cart Trigger - Needs to be connected to Navbar for full functionality */}
         <button 
           onClick={() => setIsCartOpen(true)}
-          className="fixed bottom-8 right-8 z-40 p-4 bg-pink-400 text-[#171a35] rounded-full shadow-2xl shadow-pink-400/40 hover:scale-110 transition-all"
+          className="fixed bottom-8 right-8 z-40 p-4 bg-pink-400 text-[#171a35] rounded-xl border-2 border-pink-200 shadow-[0_5px_0_#9d0f4f] hover:scale-110 hover:-translate-y-0.5 transition-all"
         >
           <ShoppingCart size={24} />
         </button>

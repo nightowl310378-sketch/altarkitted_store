@@ -36,7 +36,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'py-3 bg-[#131630]/85 backdrop-blur-lg border-b border-white/10' : 'py-6 bg-transparent'
+      isScrolled ? 'py-3 bg-[#131630]/90 backdrop-blur-lg border-b-2 border-pink-400/20' : 'py-6 bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -44,7 +44,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
           <img
             src="/assets/images/logo.webp"
             alt="Altarkitted logo"
-            className="w-10 h-10 object-cover rounded-lg shadow-lg shadow-pink-400/30 border border-white/10 group-hover:scale-110 transition-transform"
+            className="w-10 h-10 object-cover rounded-lg shadow-lg shadow-pink-400/30 border-2 border-pink-400/30 group-hover:scale-110 transition-transform"
           />
           <span className="text-2xl font-black tracking-tighter text-white">
             ALTAR<span className="text-pink-300">KITTED</span>
@@ -58,7 +58,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
               key={link.name}
               href={link.href}
               onClick={() => handleNav(link)}
-              className="text-sm font-medium text-gray-400 hover:text-pink-300 transition-colors"
+              className="text-xs font-black uppercase tracking-widest text-gray-400 hover:text-pink-300 transition-colors"
             >
               {link.name}
             </a>
@@ -69,7 +69,7 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
         <div className="hidden lg:flex items-center gap-4">
           <div 
             onClick={copyIP}
-            className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all cursor-pointer group"
+            className="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#0f1130] border-2 border-indigo-400/25 hover:border-pink-400/50 transition-all cursor-pointer group"
           >
             <span className="text-xs font-mono text-gray-300">play.altarkitted.com</span>
             <div className="relative">
@@ -109,11 +109,11 @@ const Navbar: React.FC<{ onCategory?: (category: string) => void }> = ({ onCateg
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#1e1914] border-b border-white/10 overflow-hidden"
+            className="lg:hidden bg-[#0f1130] border-b-2 border-indigo-400/20 overflow-hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
               {navLinks.map(link => (
-                <a key={link.name} href={link.href} className="text-lg font-medium text-gray-300" onClick={() => handleNav(link)}>
+                <a key={link.name} href={link.href} className="text-base font-black uppercase tracking-widest text-gray-300 hover:text-pink-300" onClick={() => handleNav(link)}>
                   {link.name}
                 </a>
               ))}

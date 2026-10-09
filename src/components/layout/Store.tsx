@@ -13,11 +13,11 @@ const ProductCard: React.FC<{ product: Product; onBuy: (product: Product) => voi
   return (
     <motion.div 
       whileHover={{ y: -10 }}
-      className="glass-panel group relative overflow-hidden transition-all duration-500 hover:border-pink-400/50"
+      className="glass-panel corner-cut group relative overflow-hidden transition-all duration-500 hover:border-pink-400/60"
     >
       {/* Badge */}
       {product.isPopular && (
-        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-pink-400 text-[10px] font-black rounded-full text-[#171a35] uppercase tracking-widest shadow-lg shadow-pink-400/30">
+        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-pink-400 text-[10px] font-black rounded-md -skew-x-12 border-2 border-pink-200 text-[#171a35] uppercase tracking-widest shadow-lg shadow-pink-400/30">
           Most Popular
         </div>
       )}
@@ -63,14 +63,14 @@ const ProductCard: React.FC<{ product: Product; onBuy: (product: Product) => voi
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => onBuy(product)}
-              className="btn-primary px-4 py-3 rounded-xl text-sm border border-pink-300/30"
+              className="btn-primary px-4 py-3 rounded-lg text-sm"
             >
               Buy Now
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => addToCart(product)}
-              className="p-3 bg-white/5 hover:bg-pink-400 hover:text-[#171a35] rounded-xl text-white transition-all border border-white/10 group-hover:border-pink-400"
+              className="p-3 bg-white/5 hover:bg-pink-400 hover:text-[#171a35] rounded-lg text-white transition-all border-2 border-white/10 group-hover:border-pink-400"
             >
               <ShoppingCart size={20} />
             </motion.button>
@@ -108,7 +108,7 @@ const Store: React.FC<{
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1 rounded-full bg-pink-400/10 text-pink-300 text-xs font-bold tracking-widest uppercase mb-4 border border-pink-400/20"
+            className="kicker mb-4"
           >
             The Marketplace
           </motion.div>
@@ -127,10 +127,10 @@ const Store: React.FC<{
               <button 
                 key={cat}
                 onClick={() => onCategoryChange(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                className={`px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap ${
                   activeCategory === cat 
                     ? 'bg-pink-400 text-[#171a35] shadow-lg shadow-pink-400/30' 
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+                    : 'bg-[#0f1130] text-gray-400 hover:text-pink-300 border-2 border-white/10 hover:border-pink-400/50'
                 }`}
               >
                 {cat}
@@ -144,7 +144,7 @@ const Store: React.FC<{
               placeholder="Search items..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-5 py-3 bg-white/5 border border-white/10 rounded-full text-sm focus:outline-none focus:border-pink-400 transition-all"
+              className="w-full px-5 py-3 bg-[#0f1130] border-2 border-white/10 rounded-lg text-sm focus:outline-none focus:border-pink-400 transition-all"
             />
             <Search size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500" />
           </div>
