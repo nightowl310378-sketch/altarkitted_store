@@ -58,22 +58,6 @@ export const PRODUCTS: Product[] = [
     color: 'from-violet-400 to-violet-800',
     isPopular: true,
   },
-  {
-    id: 'rank-early-access',
-    icon: 'early-access',
-    name: 'EARLY ACCESS',
-    description: 'Join the first wave — an exclusive limited rank with permanent perks and priority queue.',
-    price: 32,
-    category: 'Ranks',
-    perks: [
-      'Exclusive Early Access Chat/Tab Tag',
-      'Priority Queue Access',
-      'Early Access to New Features',
-      'Exclusive Early Access Kit',
-      'All MVP Perks',
-    ],
-    color: 'from-teal-400 to-teal-800',
-  },
   // RANK UPGRADES
   {
     id: 'upgrade-mvp-altar',

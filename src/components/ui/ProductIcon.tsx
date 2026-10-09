@@ -9,8 +9,6 @@ const TIER: Record<string, [string, string]> = {
   altar: ['#60a5fa', '#1e40af'],
   'altar-plus': ['#a78bfa', '#6d28d9'],
   'custom-rank': ['#f47195', '#9d174d'],
-  'early-access': ['#5eead4', '#0f766e'],
-  spooky: ['#c084fc', '#6b21a8'],
   'upgrade-mvp-altar': ['#c7d2fe', '#6366f1'],
   'upgrade-altar-plus': ['#c7d2fe', '#6366f1'],
   'upgrade-custom': ['#c7d2fe', '#6366f1'],
@@ -26,8 +24,6 @@ const MONOGRAM: Record<string, string> = {
   altar: 'A',
   'altar-plus': 'A+',
   'custom-rank': 'CR',
-  'early-access': 'EA',
-  spooky: 'SP',
 };
 
 const TierDefs: React.FC<{ id: string; from: string; to: string }> = ({ id, from, to }) => (
