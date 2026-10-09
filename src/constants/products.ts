@@ -59,25 +59,6 @@ export const PRODUCTS: Product[] = [
     isPopular: true,
   },
   {
-    id: 'rank-custom',
-    tebexPackageId: 7629180,
-    icon: 'custom-rank',
-    name: 'CUSTOM RANK',
-    image: '/assets/images/ranks/custom-rank.png',
-    description: 'All Altar+ perks plus /setprefix, your own kit and a daily custom key.',
-    price: 20,
-    category: 'Ranks',
-    perks: [
-      'All Altar / Altar+ / VIP Perks',
-      '/setprefix — Custom Named Prefix',
-      'Your Own Premade Kit (5h cooldown)',
-      '1x Space Key + 1 Custom Key Daily',
-      'Gift the Server a Space Key (/keyall)',
-      'Shadow Blade & Nightpiercer Kit',
-    ],
-    color: 'from-pink-400 to-rose-800',
-  },
-  {
     id: 'rank-early-access',
     icon: 'early-access',
     name: 'EARLY ACCESS',
@@ -92,22 +73,6 @@ export const PRODUCTS: Product[] = [
       'All MVP Perks',
     ],
     color: 'from-teal-400 to-teal-800',
-  },
-  {
-    id: 'rank-spooky',
-    icon: 'spooky',
-    name: 'SPOOKY RANK',
-    description: 'The ultimate Halloween rank — every Custom Rank perk plus spooky cosmetics and daily keys.',
-    price: 35,
-    category: 'Ranks',
-    perks: [
-      'All Custom Rank Perks',
-      'Spooky Gradient Prefix',
-      'Exclusive Spooky Cosmetics & Emotes',
-      'Spooky Kit (4h cooldown)',
-      '5x Spooky Keys Daily',
-    ],
-    color: 'from-purple-400 to-purple-800',
   },
   // RANK UPGRADES
   {
